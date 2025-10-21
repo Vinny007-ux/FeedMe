@@ -1,0 +1,58 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'student') {
+    header("Location: user_login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center; color: white;">Welcome, <?= htmlspecialchars($username) ?>!</h2>
+        <p style="text-align: center; color: white;">Choose a category to submit your feedback:</p>
+
+        <div class="dashboard-grid">
+            <a href="feedback.php?category=CSS" class="category-card">
+                <h3>Center for Student Success</h3>
+            </a>
+
+            <a href="feedback.php?category=Finance" class="category-card">
+                <h3>Finance</h3>
+            </a>
+
+            <a href="feedback.php?category=Faculty" class="category-card">
+                <h3>Faculty</h3>
+            </a>
+
+            <a href="feedback.php?category=Library" class="category-card">
+                <h3>Library</h3>
+            </a>
+
+            <a href="feedback.php?category=EC" class="category-card">
+                <h3>Event Center</h3>
+            </a>
+
+            <a href="feedback.php?category=Classroom" class="category-card">
+                <h3>Classroom</h3>
+            </a>
+
+            <a href="feedback.php?category=Cafeteria" class="category-card">
+                <h3>Cafeteria</h3>
+            </a>
+        </div>
+
+        <p style="text-align:center; margin-top:20px;">
+            <a href="logout.php" class="btn">Logout</a>
+        </p>
+    </div>
+</body>
+</html>
