@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'student') {
+    header("Location: user_login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,3 +56,4 @@
     </div>
 </body>
 </html>
+
